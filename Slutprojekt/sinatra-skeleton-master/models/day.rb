@@ -3,4 +3,6 @@ class Day
 
   property :id, Serial
   property :date, Date
+
+  has n, :plans
 end

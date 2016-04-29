@@ -3,9 +3,12 @@ class Project
 
   property :id, Serial
   property :name, String, required: true
-  property :s_date, Date
-  property :e_date, Date
+  property :start_date, Date
+  property :end_date, Date
   property :description, Text
+
+  belongs_to :category
+  has n, :assignments
 
 
 end
