@@ -5,9 +5,10 @@ class User
   property :f_name, String
   property :l_name, String
   property :password, BCryptHash, required: true
-  property :email, String, unique: true
+  property :email, String, required: true, unique: true
 
-
+  has n, :categories
+  has n, :projects
   has n, :assignments
   has n, :roles
 
