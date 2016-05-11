@@ -4,5 +4,7 @@
     <file url="file://$PROJECT_DIR$/Slutprojekt/sinatra-skeleton-master/db/seed.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Slutprojekt/sinatra-skeleton-master/models/user.rb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Slutprojekt/sinatra-skeleton-master/views/layout.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Slutprojekt/sinatra-skeleton-master/views/login.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Slutprojekt/sinatra-skeleton-master/views/syrgr.erb" charset="UTF-8" />
   </component>
 </project>

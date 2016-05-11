@@ -1,14 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>BUidaf</title>
+
+  <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" type="text/css" href="css/layout.css">
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-  <title>Document</title>
 </head>
+
 <body>
 
 <!-- Uses a header that scrolls with the text, rather than staying
@@ -17,7 +19,11 @@
   <header class="mdl-layout__header mdl-layout__header--scroll">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">ToDo-list</span>
+      <span class="mdl-layout-title"><!-- Accent-colored raised button with ripple -->
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+  Ny Uppgift
+</button>
+</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
@@ -31,8 +37,8 @@
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Kategorier</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black " href="">Personligt</a>
+    <nav id="demo" class="mdl-navigation">
+      <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black" href="">Personligt</a>
       <a class="mdl-navigation__link mdl-color--red-300 mdl-color-text--black" href="">Arbete</a>
       <a class="mdl-navigation__link mdl-color--yellow-300 mdl-color-text--black" href="">Skola</a>
       <a class="mdl-navigation__link mdl-color--green-300 mdl-color-text--black" href="">Övrigt</a>
@@ -44,26 +50,40 @@
       <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">7 dagar</a>
       <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">30 dagar</a>
     </nav>
+    <span class="mdl-layout-title">Projekt</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="">Idag</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-400 mdl-color-text--black" href="">Imorgon</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">7 dagar</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">30 dagar</a>
+    </nav>
   </div>
   <main class="mdl-layout__content">
     <div class="page-content">
 
+      <div class="pagename">
+        <% for user in @users %>
+            <h2 class="pagename-text"> <%= user.f_name %> <%= user.l_name %> </h2>
+        <% end %>
+
+        <button class="namebutton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+          Dela
+        </button>
+
+      </div>
+
+      <div class="content">
+        <div class="current_view">
 
 
-      <section class="right">
-        <h2>Projekt</h2>
-        <ul>
-          <li>G</li>
-          <li>R</li>
-          <li>A</li>
-          <li>B</li>
-        </ul>
 
-      </section>
 
+        </div>
+      </div>
 
     </div>
   </main>
+
 </div>
 
 </body>

@@ -10,6 +10,8 @@ class Seeder
   end
 
   def self.users
+
+
     User.create(f_name: 'Steffe',
                 l_name: 'Glennsson',
                 password: 'dinmamma',

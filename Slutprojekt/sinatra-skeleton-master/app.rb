@@ -8,5 +8,10 @@ class App < Sinatra::Base
     erb :layout
   end
 
+  get '/login' do
+    @users = User.all
+    erb :syrgr
+  end
+
 
 end

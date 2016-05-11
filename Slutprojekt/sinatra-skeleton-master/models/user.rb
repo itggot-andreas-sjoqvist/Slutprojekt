@@ -12,4 +12,9 @@ class User
   has n, :assignments
   has n, :roles
 
+  def name
+    "#{f_name} #{l_name}"
+
+  end
+
 end

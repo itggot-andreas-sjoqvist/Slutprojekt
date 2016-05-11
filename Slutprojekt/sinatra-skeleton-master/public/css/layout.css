@@ -1,6 +1,22 @@
-.right {
+.pagename {
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+    position: relative;
+
+}
+
+.pagename-text {
+    color: dimgray;
+    margin-left: 20px;
+    margin-top: 15px;
+    position: absolute;
+    display: block;
+}
+
+.namebutton {
     float: right;
-    margin-right: 20px;
+
 
 }
 
