@@ -32,7 +32,11 @@
         <a class="mdl-navigation__link" href="">Link</a>
         <a class="mdl-navigation__link" href="">Link</a>
         <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <form action="user/logout" method="get">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            <a class="mdl-navigation__link" href=""><p>Log Out</p></a>
+        </button>
+        </form>
       </nav>
     </div>
   </header>
@@ -54,15 +58,15 @@
     </nav>
     <span class="mdl-layout-title" id="hide3">Projekt</span>
     <nav class="mdl-navigation" id="show3">
-      <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="">Idag</a>
-      <a class="mdl-navigation__link mdl-color--blue-grey-400 mdl-color-text--black" href="">Imorgon</a>
-      <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">7 dagar</a>
-      <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">30 dagar</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="">NP</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-400 mdl-color-text--black" href="">Körkort</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">Slutprojekt</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">Stolpar</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
+    
     <div class="page-content">
-
 
 
     <script>$(document).ready(function() {
@@ -84,17 +88,9 @@
       });</script>
 
 
-      <div class="pagename">
-
-        <section>
-          <%= yield %>
-        </section>
-
-        <button class="namebutton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-          Dela
-        </button>
-
-      </div>
+  <section>
+      <%= yield %>
+    </section>
 
 
 

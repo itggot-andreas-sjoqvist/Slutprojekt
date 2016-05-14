@@ -1,1 +1,12 @@
-<p>yolo</p>
+<div class="pagename">
+
+<% for user in @users %>
+<h2><%= user.id %> <%= user.l_name %></h2>
+
+  <% end %>
+
+  <button class="namebutton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    Dela
+  </button>
+
+</div>
