@@ -4,6 +4,8 @@ class Seeder
     self.users
     self.projects
     self.assignments
+    self.categories
+    self.days
 
 
 
@@ -38,16 +40,34 @@ class Seeder
   end
 
   def self.assignments
-    Assignment.create(name: 'Gör uppg. 1415-1422',
+   @assignment = Assignment.create(name: 'Gör uppg. 1415-1422',
                       description: 'Aah, exakt',
                       time: DateTime.new(19.00),
                       date: Date.new(2016,5,4),
                       project_id: 2,
                       category_id: 2,
-                      plan_id: 1,
-                      user_id: 2
-                      )
+                      user_id: 2)
+
   end
 
+  def self.categories
+   Category.create(name: 'Knäcker dem',
+                    color: 'blue',
+                    user_id: 1
+                    )
+
+
+
+  end
+
+  def self.days
+    day = Day.create(date: Date.new(2016,5,20))
+    day.assignments << @assignments
+    day.save
+  end
+
+  def AssignmentDay
+   AssignmentDay.create(:assignment => assignment, :day => day)
+  end
 
 end

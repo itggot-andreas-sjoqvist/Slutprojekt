@@ -17,20 +17,21 @@
 
 .namebutton {
     float: right;
-
-
 }
 
 #show1 {
     display: none;
+    cursor: pointer;
 }
 
 #show2 {
     display: none;
+    cursor: pointer;
 }
 
 #show3 {
     display: none;
+    cursor: pointer;
 }
 
 .tab {
@@ -41,4 +42,18 @@
 
 a p {
     margin: auto;
+}
+
+.pagenametext {
+    display: inline-block;
+}
+
+#hide1 {
+    cursor: pointer;
+}
+#hide2 {
+    cursor: pointer;
+}
+#hide3 {
+    cursor: pointer;
 }

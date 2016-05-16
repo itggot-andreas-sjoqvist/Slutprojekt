@@ -20,10 +20,11 @@
   <header class="mdl-layout__header mdl-layout__header--scroll">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title"><!-- Accent-colored raised button with ripple -->
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-  Ny Uppgift
-</button>
+      <span class="mdl-layout-title"><form action="create/" method="get">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+          <a class="mdl-navigation__link" href=""><p>Skapa</p></a>
+        </button>
+      </form>
 </span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
@@ -40,13 +41,18 @@
       </nav>
     </div>
   </header>
+
+
+
+
+
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title" id="hide1" >Kategorier</span>
     <nav class="mdl-navigation" id="show1">
-      <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black" href="">Personligt</a>
-      <a class="mdl-navigation__link mdl-color--red-300 mdl-color-text--black" href="">Arbete</a>
-      <a class="mdl-navigation__link mdl-color--yellow-300 mdl-color-text--black" href="">Skola</a>
-      <a class="mdl-navigation__link mdl-color--green-300 mdl-color-text--black" href="">Övrigt</a>
+      <% for category in @categories %>
+          <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black" href=""><%= category.name %></a>
+      <% end %>
+
     </nav>
 
     <span class="mdl-layout-title" id="hide2">Planering</span>
@@ -65,7 +71,7 @@
     </nav>
   </div>
   <main class="mdl-layout__content">
-    
+
     <div class="page-content">
 
 

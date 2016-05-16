@@ -4,5 +4,5 @@ class Day
   property :id, Serial
   property :date, Date
 
-  has n, :plans
+  has n, :assignments, :through => Resource
 end

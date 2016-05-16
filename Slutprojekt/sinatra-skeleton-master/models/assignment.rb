@@ -9,7 +9,7 @@ class Assignment
 
   belongs_to :project
   belongs_to :category
-  belongs_to :plan
+  has n, :days, :through => Resource
 
 
 end

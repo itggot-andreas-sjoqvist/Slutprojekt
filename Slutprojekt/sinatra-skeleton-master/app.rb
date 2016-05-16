@@ -3,7 +3,7 @@ class App < Sinatra::Base
   enable :sessions
 
   before do
-       @user = User.get(session[:user])
+       @user = User.get(session[:user_id])
      end
 
   get '/' do
@@ -14,11 +14,42 @@ class App < Sinatra::Base
       end
   end
 
+  get '/create/' do
+    erb :create
+  end
+
+  post '/create/assignment' do
+    assignment = Assignment.create(name: params['name'],
+                                  description: params['description'],
+                                  date: params['date'],
+                                  time: params['time'],
+                                  project_id: params['project'],
+                                  category_id: params['category'])
+  end
+
+  post '/create/project' do
+    project = Project.create(name: params['name'],
+                             start_date: params['start_date'],
+                             end_date: params['end_date'],
+                             description: params['description'],
+                             category_id: params['category'])
+
+  end
+
+  post '/create/dag, typ' do
+    day = Day.create(date: Date.new(params['date']))
+    day.assignments << params['rubrik']
+  end
+
   get '/home' do
-    @users = User.all
+
     if session[:user_id]
-        @assignments = Assignment.all(user_id: @user_id)
-        @projects = Project.all(user_id: @user_id)
+        @users = User.all(:id => session[:user_id])
+        @assignments = Assignment.all(user_id: @user.id)
+        @projects = Project.all(user_id: @user.id)
+        @categories = Category.all(user_id: @user.id)
+        @days = Day.all
+
         erb :overview
     else
       redirect '/'
