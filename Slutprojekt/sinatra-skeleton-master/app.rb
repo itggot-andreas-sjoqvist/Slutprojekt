@@ -14,27 +14,34 @@ class App < Sinatra::Base
       end
   end
 
-  get '/create/' do
+  get '/create' do
+
+    @categories = Category.all(user_id: @user_id)
     erb :create
   end
 
   post '/create/assignment' do
-    assignment = Assignment.create(name: params['name'],
-                                  description: params['description'],
-                                  date: params['date'],
-                                  time: params['time'],
-                                  project_id: params['project'],
-                                  category_id: params['category'])
+    Assignment.create(name: params['name'],
+                      description: params['description'],
+                      date: params['date'],
+                      time: params['time'],
+                      project_id: params['project'],
+                      category_id: params['category'],
+                      user_id: session[:user_id]
+    )
+    redirect back
   end
 
   post '/create/project' do
-    project = Project.create(name: params['name'],
+    Project.create(name: params['name'],
                              start_date: params['start_date'],
                              end_date: params['end_date'],
                              description: params['description'],
-                             category_id: params['category'])
-
+                             category_id: params['category'],
+                             user_id: session[:user_id])
+    redirect back
   end
+
 
   post '/create/dag, typ' do
     day = Day.create(date: Date.new(params['date']))

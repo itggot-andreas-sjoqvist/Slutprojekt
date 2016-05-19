@@ -22,7 +22,7 @@ class Seeder
   end
 
   def self.projects
-    p 'hello'
+
     Project.create(name: 'NP Matte',
                    start_date: Date.new(2016,5,1),
                    end_date: Date.new(2016,5,22),
@@ -34,7 +34,7 @@ class Seeder
                    start_date:Date.new(2017,2,2),
                    end_date: Date.new(2017,2,15),
                    description: 'I am very big boat. Are you very big boat?',
-                   user_id: 2,
+                   user_id: "#{:user_id}",
                    category_id: 2
                     )
   end
@@ -44,9 +44,9 @@ class Seeder
                       description: 'Aah, exakt',
                       time: DateTime.new(19.00),
                       date: Date.new(2016,5,4),
-                      project_id: 2,
-                      category_id: 2,
-                      user_id: 2)
+                      project_id: params['project'],
+                      category_id: params['category'],
+                      user_id: "#{:user_id}")
 
   end
 

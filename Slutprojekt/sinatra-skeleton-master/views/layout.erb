@@ -20,11 +20,12 @@
   <header class="mdl-layout__header mdl-layout__header--scroll">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title"><form action="create/" method="get">
+      <span class="mdl-layout-title">
+        <a class="mdl-navigation-link" href="/create">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-          <a class="mdl-navigation__link" href=""><p>Skapa</p></a>
+            Skapa
         </button>
-      </form>
+        </a>
 </span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
@@ -64,10 +65,9 @@
     </nav>
     <span class="mdl-layout-title" id="hide3">Projekt</span>
     <nav class="mdl-navigation" id="show3">
-      <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="">NP</a>
-      <a class="mdl-navigation__link mdl-color--blue-grey-400 mdl-color-text--black" href="">Körkort</a>
-      <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">Slutprojekt</a>
-      <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">Stolpar</a>
+      <% for project in @projects %>
+      <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href=""><%= project.name %></a>
+      <% end %>
     </nav>
   </div>
   <main class="mdl-layout__content">

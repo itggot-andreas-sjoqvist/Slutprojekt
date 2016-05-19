@@ -7,6 +7,7 @@ class Assignment
   property :time, DateTime
   property :date, Date
 
+  belongs_to :user
   belongs_to :project
   belongs_to :category
   has n, :days, :through => Resource

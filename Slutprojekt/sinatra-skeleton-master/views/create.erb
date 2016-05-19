@@ -8,7 +8,7 @@
         <a href="#create_assignment" class="mdl-tabs__tab">Ny Uppgift</a>
         <a href="#create_project" class="mdl-tabs__tab">Nytt Projekt</a>
       </div>
-      <div class="mdl-tabs__panel is-active" id="create_assignment">
+      <div class="mdl-tabs__panel" id="create_project">
         <form action="create/project" method="post">
           <div class="mdl-textfield mdl-js-textfield">
           <input class="mdl-textfield__input" name="name" type="text" id="name">
@@ -20,11 +20,16 @@
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="start_date" type="date" id="start_date">
-            <label class="mdl-textfield__label" for="start_date">Start date</label>
+            <label class="mdl-textfield__label" for="start_date">Start date yyyy-mm-dd</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="end_date" type="date" id="end_date">
-            <label class="mdl-textfield__label" for="end_date">End date</label>
+            <label class="mdl-textfield__label" for="end_date">End date yyyy-mm-dd</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="category" type="date" id="category_id">
+            <label class="mdl-textfield__label" for="category_id">Category</label>
           </div>
 
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
@@ -35,8 +40,8 @@
       <div class="mdl-tabs__panel is-active" id="create_assignment">
         <form action="create/assignment" method="post">
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="rubrik" type="text" id="rubrik">
-            <label class="mdl-textfield__label" for="rubrik">Vad ska göras?</label>
+            <input class="mdl-textfield__input" name="name" type="text" id="name">
+            <label class="mdl-textfield__label" for="name">Vad ska göras?</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="description" type="text" id="description">
@@ -44,18 +49,28 @@
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="date" type="date" id="date">
-            <label class="mdl-textfield__label" for="date">Date</label>
+            <label class="mdl-textfield__label" for="date">yy/mm/dd</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="datetime" type="datetime" id="datetime">
             <label class="mdl-textfield__label" for="datetime">Time</label>
           </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="category" type="text" id="category_id">
+            <label class="mdl-textfield__label" for="category_id">Category</label>
+          </div>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="project" type="text" id="project_id">
+            <label class="mdl-textfield__label" for="project_id">Project</label>
+          </div>
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-            Log In
+            Skapa uppgift
           </button>
         </form>
       </div>
     </div>
   </div>
-</div>
+ </div>
