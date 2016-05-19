@@ -15,13 +15,13 @@ class App < Sinatra::Base
   end
 
   get '/create' do
-
+    @projects = Project.all(user_id: @user.id)
     @categories = Category.all(user_id: @user_id)
     erb :create
   end
 
   post '/create/assignment' do
-    Assignment.create(name: params['name'],
+    @assignment = Assignment.create(name: params['name'],
                       description: params['description'],
                       date: params['date'],
                       time: params['time'],
@@ -33,12 +33,18 @@ class App < Sinatra::Base
   end
 
   post '/create/project' do
-    Project.create(name: params['name'],
+    @project = Project.create(name: params['name'],
                              start_date: params['start_date'],
                              end_date: params['end_date'],
                              description: params['description'],
                              category_id: params['category'],
                              user_id: session[:user_id])
+    redirect back
+  end
+
+  post '/create/category' do
+   @category = Category.create(name: params['category_name'],
+                                user_id: session[:user_id])
     redirect back
   end
 
@@ -62,6 +68,17 @@ class App < Sinatra::Base
       redirect '/'
       end
   end
+
+  get '/project/' do
+
+        @projects = Project.all(user_id: @user.id)
+        @categories = Category.all(user_id: @user.id)
+        erb :project
+
+  end
+
+
+
 
   get '/login' do
     erb :login, layout: false
@@ -96,7 +113,5 @@ class App < Sinatra::Base
     session[:user_id] = nil
     redirect '/'
   end
-
-
 
 end

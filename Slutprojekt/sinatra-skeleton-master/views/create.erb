@@ -5,8 +5,9 @@
   <div class="mdl-card__supporting-text">
     <div class="mdl-tabs mdl-js-tabs">
       <div class="mdl-tabs__tab-bar">
-        <a href="#create_assignment" class="mdl-tabs__tab">Ny Uppgift</a>
-        <a href="#create_project" class="mdl-tabs__tab">Nytt Projekt</a>
+        <a href="#create_assignment" class="mdl-tabs__tab">Uppgift</a>
+        <a href="#create_project" class="mdl-tabs__tab">Projekt</a>
+        <a href="#create_category" class="mdl-tabs__tab">Kategori</a>
       </div>
       <div class="mdl-tabs__panel" id="create_project">
         <form action="create/project" method="post">
@@ -49,7 +50,7 @@
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="date" type="date" id="date">
-            <label class="mdl-textfield__label" for="date">yy/mm/dd</label>
+            <label class="mdl-textfield__label" for="date">yyyy-mm-dd</label>
           </div>
 
           <div class="mdl-textfield mdl-js-textfield">
@@ -71,6 +72,19 @@
           </button>
         </form>
       </div>
-    </div>
+
+      <div class="mdl-tabs__panel is-active" id="create_category">
+        <form action="create/category" method="post">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="category_name" type="text" id="category_name">
+            <label class="mdl-textfield__label" for="category_name">Kategorinamn</label>
+          </div>
+
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Skapa uppgift
+          </button>
+        </form>
+      </div>
   </div>
  </div>
+</div>

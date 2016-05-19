@@ -3,8 +3,8 @@ class Category
 
   property :id, Serial
   property :name ,String
-  property :color, String
 
+  belongs_to :user
   has n, :assignments
   has n, :projects
 
