@@ -4,16 +4,10 @@
     border: 1px solid black;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     position: relative;
+    background-color: antiquewhite;
 
 }
 
-.pagename-text {
-    color: dimgray;
-    margin-left: 20px;
-    margin-top: 15px;
-    position: absolute;
-    display: block;
-}
 
 .namebutton {
     float: right;
@@ -57,3 +51,16 @@ a p {
 #hide3 {
     cursor: pointer;
 }
+
+.list-item {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    float: left;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    background-color: antiquewhite;
+    margin-top: 20px;
+
+
+}
+

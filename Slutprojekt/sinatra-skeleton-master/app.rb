@@ -16,7 +16,7 @@ class App < Sinatra::Base
 
   get '/create' do
     @projects = Project.all(user_id: @user.id)
-    @categories = Category.all(user_id: @user_id)
+    @categories = Category.all(user_id: @user.id)
     erb :create
   end
 
@@ -44,7 +44,7 @@ class App < Sinatra::Base
 
   post '/create/category' do
    @category = Category.create(name: params['category_name'],
-                                user_id: session[:user_id])
+                               user_id: session[:user_id])
     redirect back
   end
 
@@ -69,11 +69,23 @@ class App < Sinatra::Base
       end
   end
 
-  get '/project/' do
+  get '/project/:project_id' do
+        @users = User.all(:id => session[:user_id])
+        @projects = Project.all(user_id: session[:user_id])
+        @project = Project.first(:id => params[:project_id])
+        @categories = Category.all(user_id: session[:user_id])
 
-        @projects = Project.all(user_id: @user.id)
-        @categories = Category.all(user_id: @user.id)
         erb :project
+
+  end
+
+  get '/category/:category_id' do
+    @users = User.all(:id => session[:user_id])
+    @projects = Project.all(user_id: session[:user_id], id: params[:category_id])
+    @category = Category.first(:id => params[:category_id])
+    @categories = Category.all(user_id: session[:user_id])
+
+    erb :category
 
   end
 
