@@ -74,6 +74,7 @@ class App < Sinatra::Base
         @projects = Project.all(user_id: session[:user_id])
         @project = Project.first(:id => params[:project_id])
         @categories = Category.all(user_id: session[:user_id])
+        @assignments = Assignment.all(user_id: session[:user_id])
 
         erb :project
 

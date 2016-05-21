@@ -6,4 +6,27 @@
     finns inte
 <% end %>
 
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent namebutton">
+    Dela
+  </button>
+
 </div>
+
+<% for assignment in @assignments %>
+<h4 id="hide<%=assignment.id%>"><%= assignment.name %></h4>
+<nav class="mdl-navigation" id="show<%=assignment.id%>">
+
+  <h4 class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black"
+     href="#"><%= assignment.description %></h4>
+
+</nav>
+  <% end %>
+
+
+
+
+
+
+
+
+<
