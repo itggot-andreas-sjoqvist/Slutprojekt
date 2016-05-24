@@ -7,7 +7,7 @@ class Project
   property :end_date, Date
   property :description, Text
 
-  belongs_to :user
+  has n, :users, :through => Resource
   belongs_to :category
   has n, :assignments
   has n, :days

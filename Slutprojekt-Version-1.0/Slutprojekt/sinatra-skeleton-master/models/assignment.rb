@@ -7,12 +7,10 @@ class Assignment
   property :time, DateTime
   property :date, Date
 
-  belongs_to :user
+  has n, :users, :through => Resource
   belongs_to :project
   belongs_to :category
   has n, :days, :through => Resource
-
-
 
 
 end

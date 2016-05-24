@@ -15,38 +15,42 @@ class App < Sinatra::Base
   end
 
   get '/create' do
-    @user = session[:user_id]
-    @projects = Project.all(user_id: @user.id)
-    @categories = Category.all(user_id: @user.id)
+    @projects = Project.all(project_users: @user)
+    @categories = Category.all(user_id: @user)
     erb :create
   end
 
   post '/create/assignment' do
-    @assignment = Assignment.create(name: params['name'],
+    assignment = Assignment.create(name: params['name'],
                       description: params['description'],
                       date: params['date'],
                       time: params['time'],
                       project_id: params['project'],
                       category_id: params['category'])
+    assignment.users << @user
+    assignment.save
 
+    redirect back
   end
 
   post '/create/project' do
+
     project = Project.create(name: params['name'],
                              start_date: params['start_date'],
                              end_date: params['end_date'],
                              description: params['description'],
                              category_id: params['category'])
+
     project.users << @user
     project.save
-
-
     redirect back
-  end
+    end
+
+
 
   post '/create/category' do
    @category = Category.create(name: params['category_name'],
-                               user_id: session[:user_id])
+                                user_id: session[:user_id])
     redirect back
   end
 
@@ -61,10 +65,10 @@ class App < Sinatra::Base
 
     if session[:user_id]
         @users = User.all(:id => session[:user_id])
-        @assignments = Assignment.all(user_id: @user.id)
-        @projects = Project.all(user_id: @user.id)
-        @categories = Category.all(user_id: @user.id)
-        @days = Day.all
+        @assignments = Assignment.all(assignment_users: session[:user_id])
+        @projects = Project.all(project_users: session[:user_id])
+        @categories = Category.all(user_id: session[:user_id])
+        
 
         erb :overview
     else
@@ -85,7 +89,7 @@ class App < Sinatra::Base
 
   get '/category/:category_id' do
     @users = User.all(:id => session[:user_id])
-    @projects = Project.all(user_id: session[:user_id], id: params[:category_id])
+    @projects = Project.all(project_users: @user_id, id: params[:category_id])
     @category = Category.first(:id => params[:category_id])
     @categories = Category.all(user_id: session[:user_id])
 
@@ -114,10 +118,11 @@ class App < Sinatra::Base
 
   post '/user/register' do
     if params['password'] == params['confirm_password']
-      @user = User.create(f_name: params['f_name'],
+      user = User.create(f_name: params['f_name'],
                   l_name: params['l_name'],
                          email: params['email'],
-                         password: params['password'])
+                         password: params['password']
+                          )
       redirect '/home'
     end
       redirect back

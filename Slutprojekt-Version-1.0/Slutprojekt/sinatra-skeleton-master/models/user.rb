@@ -8,12 +8,13 @@ class User
   property :email, String, required: true, unique: true
 
   has n, :categories
-  has n, :projects
-  has n, :assignments
+  has n, :projects, :through => Resource
+  has n, :assignments, :through => Resource
 
 
   def name
     "#{f_name} #{l_name}"
+
   end
 
 end
