@@ -3,8 +3,8 @@ class App < Sinatra::Base
   enable :sessions
 
   before do
-       @user = User.get(session[:user_id])
-     end
+     @user = User.get(session[:user_id])
+   end
 
   get '/' do
     if session[:user_id]
@@ -63,10 +63,9 @@ class App < Sinatra::Base
 
   get '/home' do
 
-    if session[:user_id]
-        @users = User.all(:id => session[:user_id])
-        @assignments = Assignment.all(assignment_users: session[:user_id])
-        @projects = Project.all(project_users: session[:user_id])
+    if session[:user_id] && @user
+        @assignments = @user.assignments
+        @projects = @user.projects
         @categories = Category.all(user_id: session[:user_id])
         
 
@@ -77,24 +76,27 @@ class App < Sinatra::Base
   end
 
   get '/project/:project_id' do
-        @users = User.all(:id => session[:user_id])
-        @projects = Project.all(user_id: session[:user_id])
+
+    if session[:user_id] && @user
+
+        @projects = @user.projects
         @project = Project.first(:id => params[:project_id])
         @categories = Category.all(user_id: session[:user_id])
-        @assignments = Assignment.all(user_id: session[:user_id])
+        @assignments = @user.assignments
 
         erb :project
-
+    end
   end
 
   get '/category/:category_id' do
-    @users = User.all(:id => session[:user_id])
-    @projects = Project.all(project_users: @user_id, id: params[:category_id])
-    @category = Category.first(:id => params[:category_id])
-    @categories = Category.all(user_id: session[:user_id])
+    if session[:user_id] && @user
+      @projects = Project.all(@user.projects, id: params[:category_id])
+      @category = Category.first(:id => params[:category_id])
+      @categories = Category.all(user_id: session[:user_id])
 
     erb :category
 
+    end
   end
 
 

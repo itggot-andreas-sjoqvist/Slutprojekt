@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
   <script src="/jquery-2.2.2.min.js"></script>
+  <script src="/js/global.js"></script>
 </head>
 
 <body>
@@ -93,6 +94,14 @@
         });
       });</script>
 
+      <% for assignment in @user.assignments %>
+
+          <script>$(document).ready(function() {
+            $("#hide<%=assignment.id%>").click(function() {
+              $("#show<%=assignment.id%>").slideToggle("fast");
+            });
+          });</script>
+          <% end %>
 
 
 

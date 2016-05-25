@@ -1,7 +1,7 @@
 <div class="pagename">
 
-<% for user in @users %>
-<h2 class="pagenametext"><%= user.name %></h2>
+<% if @user %>
+<h2 class="pagenametext"><%= @user.name %></h2>
 
   <% end %>
 
