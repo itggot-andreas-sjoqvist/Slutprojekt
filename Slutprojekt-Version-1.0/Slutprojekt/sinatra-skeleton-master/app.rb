@@ -64,9 +64,11 @@ class App < Sinatra::Base
   get '/home' do
 
     if session[:user_id] && @user
+
         @assignments = @user.assignments
         @projects = @user.projects
         @categories = Category.all(user_id: session[:user_id])
+
         
 
         erb :overview
@@ -90,7 +92,7 @@ class App < Sinatra::Base
 
   get '/category/:category_id' do
     if session[:user_id] && @user
-      @projects = Project.all(@user.projects, id: params[:category_id])
+      @projects = Project.all(id: @user.projects && params[:category_id])
       @category = Category.first(:id => params[:category_id])
       @categories = Category.all(user_id: session[:user_id])
 

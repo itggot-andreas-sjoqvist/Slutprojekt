@@ -49,23 +49,23 @@
 
 
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title" id="hide1" >Kategorier</span>
-    <nav class="mdl-navigation" id="show1">
+    <span class="mdl-layout-title hide">Kategorier</span>
+    <nav class="mdl-navigation show" style="display: none">
       <% for category in @categories %>
           <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black" href="/category/<%=category.id%>"><%= category.name %></a>
       <% end %>
 
     </nav>
 
-    <span class="mdl-layout-title" id="hide2">Planering</span>
-    <nav class="mdl-navigation" id="show2">
+    <span class="mdl-layout-title hide">Planering</span>
+    <nav class="mdl-navigation show" style="display: none">
       <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="">Idag</a>
       <a class="mdl-navigation__link mdl-color--blue-grey-400 mdl-color-text--black" href="">Imorgon</a>
       <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">7 dagar</a>
       <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">30 dagar</a>
     </nav>
-    <span class="mdl-layout-title" id="hide3">Projekt</span>
-    <nav class="mdl-navigation" id="show3">
+    <span class="mdl-layout-title hide">Projekt</span>
+    <nav class="mdl-navigation show" style="display: none">
       <% for project in @projects %>
         <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="/project/<%=project.id%>"><%= project.name %></a>
       <% end %>
@@ -77,32 +77,10 @@
 
 
     <script>$(document).ready(function() {
-      $('#hide1').click(function() {
-        $('#show1').slideToggle("fast");
+      $('.hide').click(function() {
+        $(this).next().slideToggle("fast");
       });
     });</script>
-
-      <script>$(document).ready(function() {
-        $('#hide2').click(function() {
-          $('#show2').slideToggle("fast");
-        });
-      });</script>
-
-      <script>$(document).ready(function() {
-        $('#hide3').click(function() {
-          $('#show3').slideToggle("fast");
-        });
-      });</script>
-
-      <% for assignment in @user.assignments %>
-
-          <script>$(document).ready(function() {
-            $("#hide<%=assignment.id%>").click(function() {
-              $("#show<%=assignment.id%>").slideToggle("fast");
-            });
-          });</script>
-          <% end %>
-
 
 
   <section>
