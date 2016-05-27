@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>BUidaf</title>
+
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script src="/jquery-2.2.2.min.js"></script>
+</head>
+
+<body>
+
+<!-- Uses a header that scrolls with the text, rather than staying
+  locked at the top -->
+<div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">
+        <a class="mdl-navigation-link" href="/create">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Skapa
+        </button>
+        </a>
+</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <a class="mdl-navigation__link" href="">Link</a>
+        <form action="user/logout" method="get">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            <a class="mdl-navigation__link" href=""><p>Log Out</p></a>
+        </button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title" id="hide1" >Kategorier</span>
+    <nav class="mdl-navigation" id="show1">
+      <% for category in @categories %>
+          <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black" href="/category/<%=category.id%>"><%= category.name %></a>
+      <% end %>
+
+    </nav>
+
+    <span class="mdl-layout-title" id="hide2">Planering</span>
+    <nav class="mdl-navigation" id="show2">
+      <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="">Idag</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-400 mdl-color-text--black" href="">Imorgon</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-700 mdl-color-text--black" href="">7 dagar</a>
+      <a class="mdl-navigation__link mdl-color--blue-grey-900 mdl-color-text--black" href="">30 dagar</a>
+    </nav>
+    <span class="mdl-layout-title" id="hide3">Projekt</span>
+    <nav class="mdl-navigation" id="show3">
+      <% for project in @projects %>
+        <a class="mdl-navigation__link mdl-color--blue-grey-100 mdl-color-text--black" href="/project/<%=project.id%>"><%= project.name %></a>
+      <% end %>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+
+    <div class="page-content">
+
+
+    <script>$(document).ready(function() {
+      $('#hide1').click(function() {
+        $('#show1').slideToggle("fast");
+      });
+    });</script>
+
+      <script>$(document).ready(function() {
+        $('#hide2').click(function() {
+          $('#show2').slideToggle("fast");
+        });
+      });</script>
+
+      <script>$(document).ready(function() {
+        $('#hide3').click(function() {
+          $('#show3').slideToggle("fast");
+        });
+      });</script>
+
+
+
+
+  <section>
+      <%= yield %>
+    </section>
+
+
+
+    </div>
+  </main>
+
+</div>
+
+
+
+</body>
+</html>
