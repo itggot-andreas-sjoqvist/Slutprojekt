@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>ToDo-list</title>
+  <title>ToDo-list</title>
 
   <link rel="stylesheet" href="/css/layout.css">
 
@@ -44,7 +44,7 @@
         <form action="user/logout" method="get">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             <a class="mdl-navigation__link" href=""><p>Log Out</p></a>
-        </button>
+          </button>
         </form>
       </nav>
     </div>
@@ -77,19 +77,19 @@
     <div class="page-content">
 
 
-    <script>$(document).ready(function() {
-      $('.hide').click(function() {
-        $(this).next().slideToggle("fast");
-      });
-    });</script>
+      <script>$(document).ready(function() {
+        $('.hide').click(function() {
+          $(this).next().slideToggle("fast");
+        });
+      });</script>
       <!-- Ask das Josef how to implement -->
 
 
 
 
-  <section>
-      <%= yield %>
-    </section>
+      <section>
+        <%= yield %>
+      </section>
 
 
 
