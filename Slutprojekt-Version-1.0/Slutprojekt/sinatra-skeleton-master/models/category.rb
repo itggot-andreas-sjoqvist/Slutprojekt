@@ -6,6 +6,5 @@ class Category
 
   belongs_to :user
   has n, :assignments
-  has n, :projects
 
 end

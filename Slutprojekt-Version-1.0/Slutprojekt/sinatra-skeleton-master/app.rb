@@ -15,7 +15,7 @@ class App < Sinatra::Base
   end
 
   get '/create' do
-    @projects = @user.projects
+
     @categories = Category.all(user_id: session[:user_id])
     erb :create
   end
@@ -26,7 +26,6 @@ class App < Sinatra::Base
                       description: params['description'],
                       date: params['date'],
                       time: params['time'],
-                      project_id: params['project'],
                       category_id: params['category'])
     assignment.users << @user
     assignment.save
@@ -38,22 +37,6 @@ class App < Sinatra::Base
 
     redirect back
   end
-
-  post '/create/project' do
-
-    project = Project.create(name: params['name'],
-                             start_date: params['start_date'],
-                             end_date: params['end_date'],
-                             description: params['description'],
-                             category_id: params['category'])
-
-    project.users << @user
-    project.save
-
-
-    redirect back
-    end
-
 
 
   post '/create/category' do
@@ -74,7 +57,6 @@ class App < Sinatra::Base
     if session[:user_id] && @user
         @days = Day.all
         @assignments = @user.assignments
-        @projects = @user.projects
         @categories = Category.all(user_id: session[:user_id])
 
         
@@ -85,22 +67,11 @@ class App < Sinatra::Base
       end
   end
 
-  get '/project/:project_id' do
 
-    if session[:user_id] && @user
-
-        @projects = @user.projects
-        @project = Project.first(:id => params[:project_id])
-        @categories = Category.all(user_id: session[:user_id])
-        @assignments = @user.assignments
-
-        erb :project
-    end
-  end
 
   get '/category/:category_id' do
     if session[:user_id] && @user
-      @projects = Project.all(id: @user.projects && params[:category_id])
+      @assignments =
       @category = Category.first(:id => params[:category_id])
       @categories = Category.all(user_id: session[:user_id])
 

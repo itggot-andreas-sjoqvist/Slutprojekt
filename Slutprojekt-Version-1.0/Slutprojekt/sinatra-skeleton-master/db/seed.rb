@@ -4,7 +4,6 @@ class Seeder
 
   def self.seed!
     self.users
-    self.projects
     self.assignments
     self.categories
     self.days
@@ -22,10 +21,7 @@ class Seeder
                 email: 'tvarfran@gmail.com')
   end
 
-  def self.projects
 
-
-  end
 
   def self.assignments
 
@@ -38,10 +34,11 @@ end
   end
 
   def self.days
-    d = DateTime.now
-    day = d.next
+    day = DateTime.now
+
     3650.times do
-      Day.create(date: day)
+      day = day.next
+    Day.create(date: day)
       end
     end
 

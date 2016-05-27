@@ -6,36 +6,11 @@
     <div class="mdl-tabs mdl-js-tabs">
       <div class="mdl-tabs__tab-bar">
         <a href="#create_assignment" class="mdl-tabs__tab">Uppgift</a>
-        <a href="#create_project" class="mdl-tabs__tab">Projekt</a>
         <a href="#create_category" class="mdl-tabs__tab">Kategori</a>
       </div>
-      <div class="mdl-tabs__panel" id="create_project">
-        <form action="create/project" method="post">
-          <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" name="name" type="text" id="name">
-          <label class="mdl-textfield__label" for="name">Vad ska göras?</label>
-        </div>
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="description" type="text" id="description">
-            <label class="mdl-textfield__label" for="description">Beskrivning</label>
-          </div>
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="start_date" type="date" id="start_date">
-            <label class="mdl-textfield__label" for="start_date">Start date yyyy-mm-dd</label>
-          </div>
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="end_date" type="date" id="end_date">
-            <label class="mdl-textfield__label" for="end_date">End date yyyy-mm-dd</label>
-          </div>
 
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="category" type="date" id="category_id">
-            <label class="mdl-textfield__label" for="category_id">Category</label>
-          </div>
 
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-            Skapa projekt
-          </button>
+
         </form>
       </div>
       <div class="mdl-tabs__panel is-active" id="create_assignment">
@@ -67,10 +42,7 @@
             <label class="mdl-textfield__label" for="category_id">Category</label>
           </div>
 
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="project" type="text" id="project_id">
-            <label class="mdl-textfield__label" for="project_id">Project</label>
-          </div>
+
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             Skapa uppgift
           </button>

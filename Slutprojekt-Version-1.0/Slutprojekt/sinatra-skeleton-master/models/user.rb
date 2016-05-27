@@ -8,7 +8,6 @@ class User
   property :email, String, required: true, unique: true
 
   has n, :categories
-  has n, :projects, :through => Resource
   has n, :assignments, :through => Resource
 
 

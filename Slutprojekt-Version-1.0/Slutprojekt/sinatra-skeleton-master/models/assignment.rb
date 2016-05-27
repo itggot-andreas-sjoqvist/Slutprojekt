@@ -8,7 +8,6 @@ class Assignment
   property :date, Date
 
   has n, :users, :through => Resource
-  belongs_to :project
   belongs_to :category
   has n, :days, :through => Resource
 
