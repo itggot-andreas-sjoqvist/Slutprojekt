@@ -7,22 +7,27 @@
 
 </div>
 
-Dagens upggifter:
+  <h4 class="hide">Dagens uppgifter:</h4>
+
 <% for assignment in @assignments %>
-    <h2 class="rubrik hide"><%= assignment.name %></h2>
+    <h3 class="rubrik hide"><%= assignment.name %></h3>
     <div class="pna_div show" style="display: none;
         border: 2px solid black">
       <p><%=assignment.description%></p>
       <p><%=assignment.date%> - <%=assignment.time%></p>
+    </div>
 <% end %>
-</div>
 
 
 
+<% for day in @days %>
+    <%= day.date %>
+    <% end %>
 
-<h4>Projekt</h4>
+
+  <h4>Projekt</h4>
   <% for project in @projects %>
-      <h2 class="rubrik hide"><%= project.name %></h2>
+      <h3 class="rubrik hide"><%= project.name %></h3>
       <div class="pna_div show" style="display: none;
                                         border: 2px solid black">
         <p><%=project.description%></p>

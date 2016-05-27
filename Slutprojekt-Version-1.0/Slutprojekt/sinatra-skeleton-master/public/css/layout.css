@@ -29,6 +29,7 @@ a p {
 
 .pagenametext {
     display: inline-block;
+    margin-left: 15px;
 }
 
 .hide {
@@ -54,8 +55,14 @@ a p {
 }
 
 .rubrik {
-    border: 2px solid black;
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+    border: 1px solid black;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.pna_div {
+    margin: 1%;
 }
 
 .pna_div_button {

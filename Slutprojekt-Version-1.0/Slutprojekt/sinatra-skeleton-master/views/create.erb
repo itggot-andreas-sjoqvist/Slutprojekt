@@ -42,16 +42,20 @@
         <form action="create/assignment" method="post">
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="name" type="text" id="name">
-            <label class="mdl-textfield__label" for="name">Vad ska göras?</label>
+            <label class="mdl-textfield__label" for="name">What is to be done?</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="description" type="text" id="description">
-            <label class="mdl-textfield__label" for="description">Beskrivning</label>
+            <label class="mdl-textfield__label" for="description">Description</label>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" name="date" type="date" id="date">
-            <label class="mdl-textfield__label" for="date">yyyy-mm-dd</label>
+            <input class="mdl-textfield__input datepicker" name="date" type="date" id="date">
+            <label class="mdl-textfield__label" for="date">date</label>
           </div>
+
+          <script type="text/javascript" charset="utf-8">
+            $('.datepicker').pickadate();
+          </script>
 
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="datetime" type="datetime" id="datetime">

@@ -15,12 +15,13 @@ class App < Sinatra::Base
   end
 
   get '/create' do
-    @projects = Project.all(project_users: @user)
-    @categories = Category.all(user_id: @user)
+    @projects = @user.projects
+    @categories = Category.all(user_id: session[:user_id])
     erb :create
   end
 
   post '/create/assignment' do
+
     assignment = Assignment.create(name: params['name'],
                       description: params['description'],
                       date: params['date'],
@@ -29,6 +30,11 @@ class App < Sinatra::Base
                       category_id: params['category'])
     assignment.users << @user
     assignment.save
+
+    day = params[:date]
+    assignment.days << day
+    assignment.save
+
 
     redirect back
   end
@@ -43,6 +49,8 @@ class App < Sinatra::Base
 
     project.users << @user
     project.save
+
+
     redirect back
     end
 
@@ -57,14 +65,14 @@ class App < Sinatra::Base
 
   post '/create/dag, typ' do
     day = Day.create(date: Date.new(params['date']))
-    day.assignments << params['rubrik']
+    day.assignments << params[:date]
     day.save
   end
 
   get '/home' do
 
     if session[:user_id] && @user
-
+        @days = Day.all
         @assignments = @user.assignments
         @projects = @user.projects
         @categories = Category.all(user_id: session[:user_id])

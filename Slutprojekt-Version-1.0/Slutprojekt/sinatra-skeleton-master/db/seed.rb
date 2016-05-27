@@ -1,3 +1,5 @@
+require 'date'
+
 class Seeder
 
   def self.seed!
@@ -27,7 +29,7 @@ class Seeder
 
   def self.assignments
 
-
+end
   def self.categories
 
 
@@ -36,12 +38,18 @@ class Seeder
   end
 
   def self.days
+    d = DateTime.now
+    day = d.next
+    3650.times do
+      Day.create(date: day)
+      end
+    end
 
-  end
+
+
 
   def AssignmentDay
    AssignmentDay.create(:assignment => assignment, :day => day)
   end
 
-  end
-  end
+end
