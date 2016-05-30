@@ -9,14 +9,25 @@
 
   <h4 class="hide">Dagens uppgifter:</h4>
 
-<% for assignment in @assignments %>
-    <h3 class="rubrik hide"><%= assignment.name %></h3>
-    <div class="pna_div show" style="display: none;
-        border: 2px solid black">
-      <p><%=assignment.description%></p>
-      <p><%=assignment.date%> - <%=assignment.time%></p>
-    </div>
+<% if @assignments %>
+    <% for assignment in @assignments %>
+        <div class="hide">
+        <h3 class="rubrik"><%= assignment.name %> <%=assignment.time%></h3>
+          <a class="mdl-navigation-link" href="/share/<%=assignment.id%>">
+          Dela
+          </a>
+        </div>
+        <div class="pna_div show" style="display: none;
+            border: 2px solid black">
+          <p><%=assignment.description%></p>
+          <p><%= assignment.day.date %></p>
+        </div>
+    <% end %>
+<% else %> <p>No assignments today!</p>
 <% end %>
+
+<!-- Accent-colored raised button with ripple -->
+
 
 
 

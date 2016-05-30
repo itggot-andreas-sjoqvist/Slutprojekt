@@ -62,11 +62,20 @@ a p {
 }
 
 .pna_div {
-    margin: 1%;
+    margin: 2%;
 }
 
 .pna_div_button {
     display: block;
 
 
+}
+
+span .title {
+    font-family: 'Permanent Marker', cursive;
+    margin-left: 40%;
+}
+
+.create_button {
+    margin-left: 2%;
 }

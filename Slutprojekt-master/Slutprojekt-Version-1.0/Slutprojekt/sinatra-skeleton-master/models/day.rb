@@ -4,7 +4,7 @@ class Day
   property :id, Serial
   property :date, Date
 
-  has n, :assignments, :through => Resource
+  has n, :assignments
 
 
 end

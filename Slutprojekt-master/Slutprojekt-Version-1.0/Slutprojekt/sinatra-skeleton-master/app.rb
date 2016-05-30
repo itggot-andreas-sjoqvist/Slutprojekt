@@ -21,28 +21,50 @@ class App < Sinatra::Base
   end
 
   post '/create/assignment' do
+    if session[:user_id]
+      day = Day.first(:date => Date.parse(params['date']))
 
-    assignment = Assignment.create(name: params['name'],
+      assignment = Assignment.create(name: params['name'],
                       description: params['description'],
-                      date: params['date'],
                       time: params['time'],
-                      category_id: params['category'])
+                      category_id: params['category'],
+                      day: day)
+
+
     assignment.users << @user
     assignment.save
 
-    day = params[:date]
-    assignment.days << day
-    assignment.save
+    p assignment
 
 
+  end
     redirect back
   end
+
 
 
   post '/create/category' do
    @category = Category.create(name: params['category_name'],
                                 user_id: session[:user_id])
     redirect back
+  end
+
+  get '/share/:assignment_id' do
+    @assignment = Assignment.first(:id => params[:assignment_id])
+    @categories = Category.all(user_id: session[:user_id])
+    erb :share
+  end
+
+  post '/share/share/' do
+
+    @assignment = Assignment.first(:id => params[:assignment_id])
+    @user = User.first(email: params['email'])
+    p @assignment
+    p @user
+
+    AssignmentUser.create(:assignment_id => @assignment_id, :user_id => @user_id)
+    redirect back
+
   end
 
 
@@ -55,9 +77,10 @@ class App < Sinatra::Base
   get '/home' do
 
     if session[:user_id] && @user
-        @days = Day.all
-        @assignments = @user.assignments
+        day = Day.first(:date => Date.today)
+        @assignments = Assignment.all(day: day, :id => session[:user_id])
         @categories = Category.all(user_id: session[:user_id])
+        @day = Day.first(:id => params[:day_id])
 
         
 

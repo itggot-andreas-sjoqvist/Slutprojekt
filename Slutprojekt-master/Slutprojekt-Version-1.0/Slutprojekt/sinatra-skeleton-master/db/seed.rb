@@ -28,25 +28,20 @@ class Seeder
 end
   def self.categories
 
-
-
-
   end
+
+
 
   def self.days
     day = Date.today
 
-    3650.times do
+    2650.times do
+      Day.create(date: day)
       day = day.next
-    Day.create(date: day)
-      end
     end
-
-
-
-
-  def AssignmentDay
-   AssignmentDay.create(:assignment => assignment, :day => day)
   end
 
+
 end
+
+
