@@ -15,8 +15,9 @@ class App < Sinatra::Base
   end
 
   get '/create' do
-
+    @all_assignments = Assignment.all(id: session[:user_id])
     @categories = Category.all(user_id: session[:user_id])
+    p @categories
     erb :create
   end
 
@@ -44,43 +45,59 @@ class App < Sinatra::Base
 
 
   post '/create/category' do
-   @category = Category.create(name: params['category_name'],
+    if session[:user_id]
+      @category = Category.create(name: params['category_name'],
                                 user_id: session[:user_id])
+      end
     redirect back
   end
 
   get '/share/:assignment_id' do
-    @assignment = Assignment.first(:id => params[:assignment_id])
-    @categories = Category.all(user_id: session[:user_id])
+    if session[:user_id]
+      @assignment = Assignment.first(:id => params[:assignment_id])
+      @categories = Category.all(user_id: session[:user_id])
+      @all_assignments = Assignment.all(id: session[:user_id])
+  end
     erb :share
   end
 
-  post '/share/share/' do
+  post '/share/share/:assignment_id' do
+
 
     @assignment = Assignment.first(:id => params[:assignment_id])
     @user = User.first(email: params['email'])
     p @assignment
     p @user
 
-    AssignmentUser.create(:assignment_id => @assignment_id, :user_id => @user_id)
+    @assignment.users << @user
+    @assignment.save
+
+
     redirect back
 
   end
 
+  post '/assignment/:assignment_id/delete/' do |assignment_id|
+    assignment = Assignment.get(assignment_id)
+    assignment.destroy
+      redirect back
+    #Funkar inte
 
-  post '/create/dag, typ' do
-    day = Day.create(date: Date.new(params['date']))
-    day.assignments << params[:date]
-    day.save
   end
+
+
 
   get '/home' do
 
     if session[:user_id] && @user
         day = Day.first(:date => Date.today)
-        @assignments = Assignment.all(day: day, :id => session[:user_id])
+        @assignments = Assignment.all(day: day)
+        @all_assignments = @user.assignments
         @categories = Category.all(user_id: session[:user_id])
         @day = Day.first(:id => params[:day_id])
+
+
+
 
         
 
@@ -94,7 +111,8 @@ class App < Sinatra::Base
 
   get '/category/:category_id' do
     if session[:user_id] && @user
-      @assignments =
+      @assignments = Assignment.all(category_id: params[:category_id])
+      @all_assignments = @user.assignments
       @category = Category.first(:id => params[:category_id])
       @categories = Category.all(user_id: session[:user_id])
 
@@ -117,7 +135,7 @@ class App < Sinatra::Base
       session[:user_id] = user.id
       redirect '/home'
     else
-      redirect back
+      redirect '/login'
     end
     end
 

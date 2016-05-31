@@ -4,13 +4,14 @@
   </div>
   <div class="mdl-card__supporting-text">
 
+    <%for assignment in @all_assignments %>
       <div class="mdl-tabs__panel is-active" id="create_assignment">
-        <form action="share/" method="post">
+        <form action="share/<%=assignment.id%>" method="post">
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="email" type="email" id="email">
             <label class="mdl-textfield__label" for="email">E-mail</label>
           </div>
-
+    <% end %>
 
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             Share assignment

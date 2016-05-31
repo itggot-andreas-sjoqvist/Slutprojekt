@@ -7,26 +7,31 @@
 
 </div>
 
-  <h4 class="hide">Dagens uppgifter:</h4>
+  <h4 class="hide">Today's assignments:</h4>
 
 <% if @assignments %>
     <% for assignment in @assignments %>
         <div class="hide">
-        <h3 class="rubrik"><%= assignment.name %> <%=assignment.time%></h3>
-          <a class="mdl-navigation-link" href="/share/<%=assignment.id%>">
-          Dela
-          </a>
+          <h3 class="rubrik"><%= assignment.name %></h3>
         </div>
+
         <div class="pna_div show" style="display: none;
             border: 2px solid black">
           <p><%=assignment.description%></p>
           <p><%= assignment.day.date %></p>
+          <a class="mdl-navigation__link share" href="share/<%=assignment.id%>"><p>Share</p></a>
+          <form action="assignment/<%=assignment.id%>/delete/" method="post">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent delete">
+              <a class="mdl-navigation__link" href=""><p>Delete</p></a>
+            </button>
+          </form>
+
         </div>
     <% end %>
 <% else %> <p>No assignments today!</p>
 <% end %>
 
-<!-- Accent-colored raised button with ripple -->
+<!--Dagens uppgifter slåss, får dem att sluta :-(-->
 
 
 

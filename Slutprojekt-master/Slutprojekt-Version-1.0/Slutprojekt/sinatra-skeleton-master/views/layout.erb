@@ -25,25 +25,25 @@
 
 <!-- Uses a header that scrolls with the text, rather than staying
   locked at the top -->
-<div class="mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header--scroll">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header mdl-layout__header--scroll header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">
         <a class="mdl-navigation-link" href="/create">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent create_button">
-            Create
+            <p>Create</p>
         </button>
         </a>
-        <a class="mdl-navigation-link title" href="/">Todo-list</a>
 </span>
+      <a class="mdl-navigation-link title" href="/">Todo-list</a>
 
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        <form action="user/logout" method="get">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <form action="/user/logout" method="get">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent logout_button">
             <a class="mdl-navigation__link" href=""><p>Log Out</p></a>
         </button>
         </form>
@@ -56,13 +56,29 @@
 
 
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title hide">Kategorier</span>
+    <span class="mdl-layout-title hide">Categories</span>
     <nav class="mdl-navigation show" style="display: none">
       <% for category in @categories %>
           <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black" href="/category/<%=category.id%>"><%= category.name %></a>
       <% end %>
 
     </nav>
+
+    <span class="mdl-layout-title hide">All assignments</span>
+    <nav class="mdl-navigation show" style="display: none">
+
+      <% for assignment in @all_assignments %>
+          <div class="hide">
+            <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black hide">
+              <%= assignment.name %></a>
+          </div>
+          <div class="show" style="display: none">
+            <%= assignment.description %> <%= assignment.day %>
+          </div>
+      <% end %>
+
+    </nav>
+
 
   </div>
   <main class="mdl-layout__content">
@@ -90,6 +106,7 @@
   </main>
 
 </div>
+
 
 
 

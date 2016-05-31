@@ -16,23 +16,26 @@
 
 <div class="demo-card-wide mdl-card mdl-shadow--8dp tab">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">LOGGA IN DÅ!!</h2>
+    <h2 class="mdl-card__title-text">Log in</h2>
   </div>
   <div class="mdl-card__supporting-text">
     <div class="mdl-tabs mdl-js-tabs">
       <div class="mdl-tabs__tab-bar">
-        <a href="#login" class="mdl-tabs__tab">LOG IN</a>
-        <a href="#register" class="mdl-tabs__tab">ÄR DU KASS?</a>
+        <a href="#login" class="mdl-tabs__tab is-active">Log in</a>
+        <a href="#register" class="mdl-tabs__tab">Register</a>
       </div>
       <div class="mdl-tabs__panel is-active" id="login">
         <form action="user/login" method="post">
+
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="email" type="text" id="email">
             <label class="mdl-textfield__label" for="email">E-mail</label>
+            <span class="mdl-textfield__error">Email is not registered</span>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="password" type="password" id="password">
             <label class="mdl-textfield__label" for="password">Password</label>
+            <span class="mdl-textfield__error">Password is incorrect</span>
           </div>
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
             Log In
@@ -54,6 +57,7 @@
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="email" type="email" id="email">
             <label class="mdl-textfield__label" for="email">E-mail</label>
+            <span class="mdl-textfield__error">Email and/or password is incorrect</span>
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="password" type="password" id="password">
@@ -62,6 +66,7 @@
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" name="confirm_password" type="password" id="confirm_password">
             <label class="mdl-textfield__label" for="confirm_password">Confirm password</label>
+            <span class="mdl-textfield__error">Passwords must match</span>
           </div>
 
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">

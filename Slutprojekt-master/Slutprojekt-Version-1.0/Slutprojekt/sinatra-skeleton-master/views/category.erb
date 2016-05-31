@@ -8,14 +8,13 @@
   
 </div>
 
-<% for assignment in @assignments %>
- <div class="list">
-  <div class="list-item">
-    <h4 class="list-item-text hide">
-      <a class="mdl-navigation__link mdl-color--blue-grey-300 mdl-color-text--black show">
-        <%= assignment.name %></a>
-    </h4>
-  </div>
- </div>
-<% end %>
+<div class="c_assignments">
+  <% for assignment in @assignments %>
 
+    <div class="c_assignment hide"><%=assignment.name%></div>
+      <div class="show" style="display:none">
+        <%=assignment.description%> <%= assignment.time %>
+      </div>
+
+  <% end %>
+</div>
