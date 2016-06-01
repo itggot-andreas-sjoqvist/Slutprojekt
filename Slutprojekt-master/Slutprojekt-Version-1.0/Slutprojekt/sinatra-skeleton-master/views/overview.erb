@@ -21,8 +21,8 @@
           <p><%= assignment.day.date %></p>
           <a class="mdl-navigation__link share" href="share/<%=assignment.id%>"><p>Share</p></a>
           <form action="assignment/<%=assignment.id%>/delete/" method="post">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent delete">
-              <a class="mdl-navigation__link" href=""><p>Delete</p></a>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent delete" id="<%= assignment.id %>" type="submit">
+              Delete
             </button>
           </form>
 

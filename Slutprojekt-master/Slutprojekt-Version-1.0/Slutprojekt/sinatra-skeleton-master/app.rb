@@ -56,7 +56,7 @@ class App < Sinatra::Base
     if session[:user_id]
       @assignment = Assignment.first(:id => params[:assignment_id])
       @categories = Category.all(user_id: session[:user_id])
-      @all_assignments = Assignment.all(id: session[:user_id])
+      @all_assignments = @user.assignments
   end
     erb :share
   end
@@ -77,12 +77,19 @@ class App < Sinatra::Base
 
   end
 
-  post '/assignment/:assignment_id/delete/' do |assignment_id|
-    assignment = Assignment.get(assignment_id)
-    assignment.destroy
-      redirect back
-    #Funkar inte
+  post '/assignment/:assignment_id/delete/' do
+    @assignment = Assignment.first(:id => params[:assignment_id])
+    p @assignment
+    p @assignment
 
+    if @assignment && session[:user_id]
+    @assignment.destroy
+    @user.assignments.destroy
+    redirect back
+    else
+
+      redirect back
+end
   end
 
 
@@ -91,6 +98,7 @@ class App < Sinatra::Base
 
     if session[:user_id] && @user
         day = Day.first(:date => Date.today)
+        @assignment = Assignment.first(:id => params[:assignment_id])
         @assignments = Assignment.all(day: day)
         @all_assignments = @user.assignments
         @categories = Category.all(user_id: session[:user_id])
