@@ -5,8 +5,8 @@
   <div class="mdl-card__supporting-text">
     <div class="mdl-tabs mdl-js-tabs">
       <div class="mdl-tabs__tab-bar">
-        <a href="#create_assignment" class="mdl-tabs__tab">Uppgift</a>
-        <a href="#create_category" class="mdl-tabs__tab">Kategori</a>
+        <a href="#create_assignment" class="mdl-tabs__tab">Assignment</a>
+        <a href="#create_category" class="mdl-tabs__tab">Category</a>
       </div>
 
 
@@ -22,7 +22,7 @@
           </div>
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input datepicker" name="date" type="date" id="date">
-            <label class="mdl-textfield__label" for="date">date</label>
+            <label class="mdl-textfield__label" for="date">Date</label>
           </div>
 
           <script type="text/javascript" charset="utf-8">
@@ -40,7 +40,7 @@
 
           <div class="mdl-textfield mdl-js-textfield">
           <select name="category" id="category">
-            <option>Välj kategori</option>
+            <option>Choose category</option>
             <% for category in @categories %>
                 <option value="<%= category.id %>"><%= category.name %></option>
             <% end %>

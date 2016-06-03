@@ -19,6 +19,11 @@ class Seeder
                 l_name: 'Glennsson',
                 password: 'dinmamma',
                 email: 'tvarfran@gmail.com')
+
+    User.create(f_name: 'Andreas',
+                l_name: 'Sjöqvist',
+                password: 'abc123',
+                email: 'andreas.sjoqvist@itggot.se')
   end
 
 
@@ -26,6 +31,7 @@ class Seeder
   def self.assignments
 
 end
+
   def self.categories
 
   end

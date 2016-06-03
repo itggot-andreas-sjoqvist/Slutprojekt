@@ -86,6 +86,19 @@ a.share {
     color: rgb(255,64,129);
 }
 
+a.delete_menu {
+    float: right;
+    margin-right: 2px;
+}
+
+.error {
+    display: none;
+    color: red;
+}
+.error:target {
+    display: inherit;
+}
+
 @media (max-width: 600px) {
     button.create_button {
         width: 20px;
@@ -102,6 +115,7 @@ a.share {
     button.logout_button {
         height:30%;
         padding: 0;
+        width:5%;
     }
 
     button.logout_button p {
@@ -122,5 +136,10 @@ a.share {
         font-size: 28px;
         margin-top: 5px;
     }
+    .login_box {
+        width: 95%;
+        margin: auto;
+    }
+
 
 }

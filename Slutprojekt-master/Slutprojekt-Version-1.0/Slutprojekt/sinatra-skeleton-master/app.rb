@@ -61,35 +61,39 @@ class App < Sinatra::Base
     erb :share
   end
 
-  post '/share/share/:assignment_id' do
+  post '/share/:assignment_id' do
 
 
     @assignment = Assignment.first(:id => params[:assignment_id])
-    @user = User.first(email: params['email'])
-    p @assignment
-    p @user
+    @target_user = User.first(email: params['email'])
 
-    @assignment.users << @user
-    @assignment.save
+    if AssignmentUser.first(:user_id => @target_user.id, :assignment_id => @assignment.id)
+
+      # Redan delad med användaren
+      redirect "#{back}#already_shared"
+    else
+      @assignment.users << @user
+      @user.assignments << @assignment
+      @user.save
+      @assignment.save
+      AssignmentUser.create(:user_id => @target_user.id, :assignment_id => @assignment.id)
+      redirect "#{back}#shared"
+    end
 
 
-    redirect back
 
   end
 
   post '/assignment/:assignment_id/delete/' do
     @assignment = Assignment.first(:id => params[:assignment_id])
-    p @assignment
-    p @assignment
 
     if @assignment && session[:user_id]
-    @assignment.destroy
-    @user.assignments.destroy
-    redirect back
-    else
-
+      AssignmentUser.all(:assignment_id => @assignment.id).destroy
+      @assignment.destroy
       redirect back
-end
+    else
+      redirect back
+    end
   end
 
 
@@ -99,8 +103,12 @@ end
     if session[:user_id] && @user
         day = Day.first(:date => Date.today)
         @assignment = Assignment.first(:id => params[:assignment_id])
-        @assignments = Assignment.all(day: day)
+        @assignments = @user.assignments.all(day: day)
+        p @day_assignments
+        p @day_assignments
         @all_assignments = @user.assignments
+        p @all_assignments
+        p @all_assignments
         @categories = Category.all(user_id: session[:user_id])
         @day = Day.first(:id => params[:day_id])
 

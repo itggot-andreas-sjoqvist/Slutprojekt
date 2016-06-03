@@ -73,7 +73,12 @@
               <%= assignment.name %></a>
           </div>
           <div class="show" style="display: none">
-            <%= assignment.description %> <%= assignment.day %>
+            <%= assignment.description %> <%= assignment.day.date %>
+            <form action="assignment/<%=assignment.id%>/delete/" method="post">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent delete" id="<%= assignment.id %>" type="submit">
+                Delete
+              </button>
+            </form>
           </div>
       <% end %>
 
