@@ -11,5 +11,4 @@ class Assignment
   belongs_to :category
   has n, :days, :through => Resource
 
-
-end
+ end

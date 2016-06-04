@@ -1,0 +1,71 @@
+<div class="demo-card-wide mdl-card mdl-shadow--8dp tab">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Create</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <div class="mdl-tabs mdl-js-tabs">
+      <div class="mdl-tabs__tab-bar">
+        <a href="#create_assignment" class="mdl-tabs__tab">Assignment</a>
+        <a href="#create_category" class="mdl-tabs__tab">Category</a>
+      </div>
+
+
+      <div class="mdl-tabs__panel is-active" id="create_assignment">
+        <form action="create/assignment" method="post">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="name" type="text" id="name">
+            <label class="mdl-textfield__label" for="name">What is to be done?</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" name="description" type="text" id="description">
+            <label class="mdl-textfield__label" for="description">Description</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input datepicker" name="date" type="date" id="date">
+            <label class="mdl-textfield__label" for="date">Date</label>
+          </div>
+
+          <script type="text/javascript" charset="utf-8">
+            $('.datepicker').pickadate();
+          </script>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input timepicker" name="time" type="text" id="time">
+            <label class="mdl-textfield__label" for="time">Time</label>
+          </div>
+
+          <script type="text/javascript" charset="utf-8">
+            $('.timepicker').pickatime();
+          </script>
+
+          <div class="mdl-textfield mdl-js-textfield">
+          <select name="category" id="category">
+            <option>Choose category</option>
+            <% for category in @categories %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
+          </select>
+          </div>
+
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Create assignment
+          </button>
+        </form>
+      </div>
+    <div class="mdl-tabs__panel" id="create_category">
+      <form action="create/category" method="post">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" name="category_name" type="text" id="category_name">
+          <label class="mdl-textfield__label" for="category_name">Category name</label>
+        </div>
+
+
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+          Create category
+        </button>
+      </form>
+    </div>
+  </div>
+ </div>
+ </div>

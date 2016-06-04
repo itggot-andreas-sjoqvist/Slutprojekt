@@ -1,0 +1,145 @@
+.pagename {
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    position: relative;
+    background-color: antiquewhite;
+
+}
+
+
+.namebutton {
+    float: right;
+}
+
+.show {
+    cursor: pointer;
+}
+
+.tab {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+a p {
+    margin: auto;
+}
+
+.pagenametext {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.hide {
+    cursor: pointer;
+}
+
+.c_assignment {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    background-color: antiquewhite;
+
+
+
+}
+
+
+.c_assignments {
+    margin-top: 20px;
+}
+
+.rubrik {
+    border: 1px solid black;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.pna_div {
+    margin: 2%;
+}
+
+.pna_div_button {
+    display: block;
+
+
+}
+
+.title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 30px;
+    margin: 25%;
+}
+
+.create_button {
+    margin-left: 2%;
+}
+.show a p {
+    margin: -30px 10px 2px auto;
+    float: right;
+}
+a.share {
+    color: rgb(255,64,129);
+}
+
+a.delete_menu {
+    float: right;
+    margin-right: 2px;
+}
+
+.error {
+    display: none;
+    color: red;
+}
+.error:target {
+    display: inherit;
+}
+
+@media (max-width: 600px) {
+    button.create_button {
+        width: 20px;
+        height: 30%;
+        padding: 0;
+        margin-left: -15px;
+
+    }
+    button.create_button p {
+        font-size: 10px;
+        margin:0
+
+    }
+    button.logout_button {
+        height:30%;
+        padding: 0;
+        width:5%;
+    }
+
+    button.logout_button p {
+        font-size: 10px;
+        margin: 0;
+    }
+
+
+    .title {
+        font-size: 15px;
+        margin: 5%;
+    }
+
+    .pagename {
+        height:50px;
+    }
+    .pagenametext {
+        font-size: 28px;
+        margin-top: 5px;
+    }
+    .login_box {
+        width: 95%;
+        margin: auto;
+    }
+
+
+}

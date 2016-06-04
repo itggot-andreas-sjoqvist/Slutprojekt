@@ -2,7 +2,7 @@ class Day
   include DataMapper::Resource
 
   property :id, Serial
-  property :date, DateTime, default: Time.now
+  property :date, Date
 
   has n, :assignments, :through => Resource
 

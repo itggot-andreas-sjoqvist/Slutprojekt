@@ -1,0 +1,46 @@
+<div class="pagename">
+
+<% if @user %>
+<h3 class="pagenametext"><%= @user.name %></h3>
+
+  <% end %>
+
+</div>
+
+  <h4 class="hide">Today's assignments:</h4>
+
+<% if @assignments %>
+    <% for assignment in @assignments %>
+        <div class="hide">
+          <h3 class="rubrik"><%= assignment.name %></h3>
+        </div>
+
+        <div class="pna_div show" style="display: none;
+            border: 2px solid black">
+          <p><%=assignment.description%></p>
+          <p><%= assignment.day.date %></p>
+          <a class="mdl-navigation__link share" href="share/<%=assignment.id%>"><p>Share</p></a>
+          <form action="assignment/<%=assignment.id%>/delete/" method="post">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent delete" id="<%= assignment.id %>" type="submit">
+              Delete
+            </button>
+          </form>
+
+        </div>
+    <% end %>
+<% else %> <p>No assignments today!</p>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,7 @@ class User
   has n, :assignments, :through => Resource
 
 
+
   def name
     "#{f_name} #{l_name}"
 
